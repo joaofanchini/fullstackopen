@@ -1,14 +1,13 @@
-import axios from "axios";
 import {useEffect, useState} from "react";
 import Person from "./components/person/Person";
+import PersonService from "./services/person/person";
 
 const App = () => {
-
     const [persons, setPersons] = useState([]);
+
     const effect = () => {
-        axios.get("http://localhost:3001/persons")
-            .then(response => setPersons(response.data))
-    };
+        PersonService.getAllPersons().then(response => setPersons(response.data))
+    }
 
     useEffect(effect, []);
 
